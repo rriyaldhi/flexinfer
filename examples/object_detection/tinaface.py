@@ -22,8 +22,8 @@ model = dict(
     typename='Onnx',
     model='tinaface_r50_fpn_bn.onnx',
     max_batch_size=1,
-    min_input_shapes=[(3, 128, 128)],       # Should be set when onnx model has dynamic shapes, the shape format is CxHxW. Otherwise, set None.
-    max_input_shapes=[(3, 1664, 1664)],     # Should be set when onnx model has dynamic shapes, the shape format is CxHxW. Otherwise, set None.
+    min_input_shapes=None,       # Should be set when onnx model has dynamic shapes, the shape format is CxHxW. Otherwise, set None.
+    max_input_shapes=None,     # Should be set when onnx model has dynamic shapes, the shape format is CxHxW. Otherwise, set None.
     fp16_mode=True)
 
 # 4. postprocess
