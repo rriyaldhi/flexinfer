@@ -95,27 +95,34 @@ def detect(args):
     cfg = Config.fromfile(args.config)
 
     # 1. set gpu id
+    print('Set GPU ID')
     set_device(cfg.gpu_id)
 
     # 2. build preprocess
+    print('Build Preprocess')
     preprocess = build_preprocess(cfg.preprocess)
 
     # 3. build model
+    print('Build Model')
     model = build_model(cfg.model)
 
     # # 4. build postprocess
+    print('Build Postprocess')
     postprocess = build_postprocess(cfg.postprocess)
 
     # 5. load image
+    print('Load Image')
     img = cv2.imread(args.image)
     data = [dict(img=img)]
 
     # 6. inference
+    print('Inference')
     data = preprocess(data)
     data['out'] = model(data.pop('img'))
     result = postprocess(data)[0]
 
     # 7. plot result
+    print('Plot Result')
     plot_result(result, args.image, cfg.class_names)
 
 
